@@ -1,0 +1,763 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
+  m_Name: BlockModifier
+  m_EditorClassIdentifier: 
+  serializedUdonProgramAsset: {fileID: 11400000, guid: a28a52900c0a20449b75f5c726e2a88e,
+    type: 2}
+  udonAssembly: ".data_start\n\n    .export generator\n    .export targetBlock\n    .export
+    blockType\n\n    __refl_const_intnl_udonTypeID: %SystemInt64, null\n    __refl_const_intnl_udonTypeName:
+    %SystemString, null\n    blockType: %SystemByte, null\n    generator: %VRCUdonUdonBehaviour,
+    null\n    targetBlock: %UnityEngineVector3, null\n    __0_const_intnl_SystemString:
+    %SystemString, null\n    __1_const_intnl_SystemString: %SystemString, null\n    __2_const_intnl_SystemString:
+    %SystemString, null\n    __3_const_intnl_SystemString: %SystemString, null\n    __4_const_intnl_SystemString:
+    %SystemString, null\n    __0_const_intnl_SystemUInt32: %SystemUInt32, null\n    __0_intnl_SystemByte:
+    %SystemByte, null\n    __1_intnl_SystemByte: %SystemByte, null\n    __2_intnl_SystemByte:
+    %SystemByte, null\n    __3_intnl_SystemByte: %SystemByte, null\n    __0_intnl_SystemInt32:
+    %SystemInt32, null\n    __1_intnl_SystemInt32: %SystemInt32, null\n    __2_intnl_SystemInt32:
+    %SystemInt32, null\n    __0_intnl_SystemSingle: %SystemSingle, null\n    __1_intnl_SystemSingle:
+    %SystemSingle, null\n    __2_intnl_SystemSingle: %SystemSingle, null\n    __0_intnl_returnTarget_UInt32:
+    %SystemUInt32, null\n\n.data_end\n\n        \n         # using UdonSharp;\n        \n
+    \        # using UnityEngine;\n        \n         # using VRC.SDKBase;\n        \n
+    \        # using VRC.Udon;\n        \n         # public class BlockModifier :
+    UdonSharpBehaviour\n.code_start\n        \n         # [SerializeField] WorldGenerator
+    generator;\n        \n         # [SerializeField] Vector3 targetBlock;\n        \n
+    \        # [SerializeField] byte blockType;\n        \n         # override public
+    void Interact()\n    .export _interact\n        \n    _interact:\n        \n        PUSH,
+    __0_const_intnl_SystemUInt32\n        \n         # {\n        \n         # generator.addBlock((byte)
+    Mathf.FloorToInt(targetBlock.x), (byte) Mathf.FloorToInt(targetBlock.y), (byte)
+    Mathf.FloorToInt(targetBlock.z), blockType);\n        PUSH, targetBlock\n        PUSH,
+    __0_intnl_SystemSingle\n        EXTERN, \"UnityEngineVector3.__get_x__SystemSingle\"\n
+    \       PUSH, __0_intnl_SystemSingle\n        PUSH, __0_intnl_SystemInt32\n        EXTERN,
+    \"UnityEngineMathf.__FloorToInt__SystemSingle__SystemInt32\"\n        PUSH, __0_intnl_SystemInt32\n
+    \       PUSH, __0_intnl_SystemByte\n        EXTERN, \"SystemConvert.__ToByte__SystemInt32__SystemByte\"\n
+    \       PUSH, targetBlock\n        PUSH, __1_intnl_SystemSingle\n        EXTERN,
+    \"UnityEngineVector3.__get_y__SystemSingle\"\n        PUSH, __1_intnl_SystemSingle\n
+    \       PUSH, __1_intnl_SystemInt32\n        EXTERN, \"UnityEngineMathf.__FloorToInt__SystemSingle__SystemInt32\"\n
+    \       PUSH, __1_intnl_SystemInt32\n        PUSH, __1_intnl_SystemByte\n        EXTERN,
+    \"SystemConvert.__ToByte__SystemInt32__SystemByte\"\n        PUSH, targetBlock\n
+    \       PUSH, __2_intnl_SystemSingle\n        EXTERN, \"UnityEngineVector3.__get_z__SystemSingle\"\n
+    \       PUSH, __2_intnl_SystemSingle\n        PUSH, __2_intnl_SystemInt32\n        EXTERN,
+    \"UnityEngineMathf.__FloorToInt__SystemSingle__SystemInt32\"\n        PUSH, __2_intnl_SystemInt32\n
+    \       PUSH, __2_intnl_SystemByte\n        EXTERN, \"SystemConvert.__ToByte__SystemInt32__SystemByte\"\n
+    \       PUSH, generator\n        PUSH, __0_const_intnl_SystemString\n        PUSH,
+    __0_intnl_SystemByte\n        EXTERN, \"VRCUdonCommonInterfacesIUdonEventReceiver.__SetProgramVariable__SystemString_SystemObject__SystemVoid\"\n
+    \       PUSH, generator\n        PUSH, __1_const_intnl_SystemString\n        PUSH,
+    __1_intnl_SystemByte\n        EXTERN, \"VRCUdonCommonInterfacesIUdonEventReceiver.__SetProgramVariable__SystemString_SystemObject__SystemVoid\"\n
+    \       PUSH, generator\n        PUSH, __2_const_intnl_SystemString\n        PUSH,
+    __2_intnl_SystemByte\n        EXTERN, \"VRCUdonCommonInterfacesIUdonEventReceiver.__SetProgramVariable__SystemString_SystemObject__SystemVoid\"\n
+    \       PUSH, generator\n        PUSH, __3_const_intnl_SystemString\n        PUSH,
+    blockType\n        EXTERN, \"VRCUdonCommonInterfacesIUdonEventReceiver.__SetProgramVariable__SystemString_SystemObject__SystemVoid\"\n
+    \       PUSH, blockType\n        PUSH, __3_intnl_SystemByte\n        COPY # Copy-on-write
+    symbol value dirtied\n        PUSH, generator\n        PUSH, __4_const_intnl_SystemString\n
+    \       EXTERN, \"VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEvent__SystemString__SystemVoid\"\n
+    \       PUSH, __0_intnl_returnTarget_UInt32 #Function epilogue\n        COPY\n
+    \       JUMP_INDIRECT, __0_intnl_returnTarget_UInt32\n        \n.code_end\n"
+  assemblyError: 
+  sourceCsScript: {fileID: 11500000, guid: a22926fb76b6c8a479cefb259b00bf4c, type: 3}
+  behaviourIDHeapVarName: __refl_const_intnl_udonTypeID
+  compileErrors: []
+  debugInfo:
+    serializedDebugSpans:
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 0
+      endSourceChar: 2
+      line: 0
+      lineChar: 0
+      spanCodeSection: "\r\n"
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 2
+      endSourceChar: 2
+      line: 1
+      lineChar: 0
+      spanCodeSection: 
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 2
+      endSourceChar: 8
+      line: 1
+      lineChar: 0
+      spanCodeSection: 'using '
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 8
+      endSourceChar: 20
+      line: 1
+      lineChar: 6
+      spanCodeSection: "UdonSharp;\r\n"
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 20
+      endSourceChar: 26
+      line: 2
+      lineChar: 0
+      spanCodeSection: 'using '
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 26
+      endSourceChar: 40
+      line: 2
+      lineChar: 6
+      spanCodeSection: "UnityEngine;\r\n"
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 40
+      endSourceChar: 46
+      line: 3
+      lineChar: 0
+      spanCodeSection: 'using '
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 46
+      endSourceChar: 46
+      line: 3
+      lineChar: 6
+      spanCodeSection: 
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 46
+      endSourceChar: 50
+      line: 3
+      lineChar: 6
+      spanCodeSection: VRC.
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 50
+      endSourceChar: 60
+      line: 3
+      lineChar: 10
+      spanCodeSection: "SDKBase;\r\n"
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 60
+      endSourceChar: 66
+      line: 4
+      lineChar: 0
+      spanCodeSection: 'using '
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 66
+      endSourceChar: 66
+      line: 4
+      lineChar: 6
+      spanCodeSection: 
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 66
+      endSourceChar: 70
+      line: 4
+      lineChar: 6
+      spanCodeSection: VRC.
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 70
+      endSourceChar: 79
+      line: 4
+      lineChar: 10
+      spanCodeSection: "Udon;\r\n\r\n"
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 79
+      endSourceChar: 106
+      line: 6
+      lineChar: 0
+      spanCodeSection: 'public class BlockModifier '
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 106
+      endSourceChar: 108
+      line: 6
+      lineChar: 27
+      spanCodeSection: ': '
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 108
+      endSourceChar: 108
+      line: 6
+      lineChar: 29
+      spanCodeSection: 
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 108
+      endSourceChar: 135
+      line: 6
+      lineChar: 29
+      spanCodeSection: "UdonSharpBehaviour\r\n{\r\n    "
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 135
+      endSourceChar: 136
+      line: 8
+      lineChar: 4
+      spanCodeSection: '['
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 136
+      endSourceChar: 136
+      line: 8
+      lineChar: 5
+      spanCodeSection: 
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 136
+      endSourceChar: 152
+      line: 8
+      lineChar: 5
+      spanCodeSection: 'SerializeField] '
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 152
+      endSourceChar: 152
+      line: 8
+      lineChar: 21
+      spanCodeSection: 
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 152
+      endSourceChar: 183
+      line: 8
+      lineChar: 21
+      spanCodeSection: "WorldGenerator generator;\r\n    "
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 183
+      endSourceChar: 184
+      line: 9
+      lineChar: 4
+      spanCodeSection: '['
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 184
+      endSourceChar: 184
+      line: 9
+      lineChar: 5
+      spanCodeSection: 
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 184
+      endSourceChar: 200
+      line: 9
+      lineChar: 5
+      spanCodeSection: 'SerializeField] '
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 200
+      endSourceChar: 200
+      line: 9
+      lineChar: 21
+      spanCodeSection: 
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 200
+      endSourceChar: 226
+      line: 9
+      lineChar: 21
+      spanCodeSection: "Vector3 targetBlock;\r\n    "
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 226
+      endSourceChar: 227
+      line: 10
+      lineChar: 4
+      spanCodeSection: '['
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 227
+      endSourceChar: 227
+      line: 10
+      lineChar: 5
+      spanCodeSection: 
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 227
+      endSourceChar: 243
+      line: 10
+      lineChar: 5
+      spanCodeSection: 'SerializeField] '
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 243
+      endSourceChar: 243
+      line: 10
+      lineChar: 21
+      spanCodeSection: 
+    - startInstruction: 0
+      endInstruction: -1
+      startSourceChar: 243
+      endSourceChar: 266
+      line: 10
+      lineChar: 21
+      spanCodeSection: "byte blockType;\r\n\r\n    "
+    - startInstruction: 0
+      endInstruction: 7
+      startSourceChar: 266
+      endSourceChar: 303
+      line: 12
+      lineChar: 4
+      spanCodeSection: "override public void Interact()\r\n    "
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 303
+      endSourceChar: 314
+      line: 13
+      lineChar: 4
+      spanCodeSection: "{\r\n        "
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 314
+      endSourceChar: 314
+      line: 14
+      lineChar: 8
+      spanCodeSection: 
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 314
+      endSourceChar: 314
+      line: 14
+      lineChar: 8
+      spanCodeSection: 
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 314
+      endSourceChar: 314
+      line: 14
+      lineChar: 8
+      spanCodeSection: 
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 314
+      endSourceChar: 324
+      line: 14
+      lineChar: 8
+      spanCodeSection: generator.
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 324
+      endSourceChar: 333
+      line: 14
+      lineChar: 18
+      spanCodeSection: addBlock(
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 333
+      endSourceChar: 340
+      line: 14
+      lineChar: 27
+      spanCodeSection: '(byte) '
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 340
+      endSourceChar: 340
+      line: 14
+      lineChar: 34
+      spanCodeSection: 
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 340
+      endSourceChar: 340
+      line: 14
+      lineChar: 34
+      spanCodeSection: 
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 340
+      endSourceChar: 346
+      line: 14
+      lineChar: 34
+      spanCodeSection: Mathf.
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 346
+      endSourceChar: 357
+      line: 14
+      lineChar: 40
+      spanCodeSection: FloorToInt(
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 357
+      endSourceChar: 357
+      line: 14
+      lineChar: 51
+      spanCodeSection: 
+    - startInstruction: 8
+      endInstruction: 7
+      startSourceChar: 357
+      endSourceChar: 369
+      line: 14
+      lineChar: 51
+      spanCodeSection: targetBlock.
+    - startInstruction: 8
+      endInstruction: 79
+      startSourceChar: 369
+      endSourceChar: 373
+      line: 14
+      lineChar: 63
+      spanCodeSection: 'x), '
+    - startInstruction: 80
+      endInstruction: 79
+      startSourceChar: 373
+      endSourceChar: 380
+      line: 14
+      lineChar: 67
+      spanCodeSection: '(byte) '
+    - startInstruction: 80
+      endInstruction: 79
+      startSourceChar: 380
+      endSourceChar: 380
+      line: 14
+      lineChar: 74
+      spanCodeSection: 
+    - startInstruction: 80
+      endInstruction: 79
+      startSourceChar: 380
+      endSourceChar: 380
+      line: 14
+      lineChar: 74
+      spanCodeSection: 
+    - startInstruction: 80
+      endInstruction: 79
+      startSourceChar: 380
+      endSourceChar: 386
+      line: 14
+      lineChar: 74
+      spanCodeSection: Mathf.
+    - startInstruction: 80
+      endInstruction: 79
+      startSourceChar: 386
+      endSourceChar: 397
+      line: 14
+      lineChar: 80
+      spanCodeSection: FloorToInt(
+    - startInstruction: 80
+      endInstruction: 79
+      startSourceChar: 397
+      endSourceChar: 397
+      line: 14
+      lineChar: 91
+      spanCodeSection: 
+    - startInstruction: 80
+      endInstruction: 79
+      startSourceChar: 397
+      endSourceChar: 409
+      line: 14
+      lineChar: 91
+      spanCodeSection: targetBlock.
+    - startInstruction: 80
+      endInstruction: 151
+      startSourceChar: 409
+      endSourceChar: 413
+      line: 14
+      lineChar: 103
+      spanCodeSection: 'y), '
+    - startInstruction: 152
+      endInstruction: 151
+      startSourceChar: 413
+      endSourceChar: 420
+      line: 14
+      lineChar: 107
+      spanCodeSection: '(byte) '
+    - startInstruction: 152
+      endInstruction: 151
+      startSourceChar: 420
+      endSourceChar: 420
+      line: 14
+      lineChar: 114
+      spanCodeSection: 
+    - startInstruction: 152
+      endInstruction: 151
+      startSourceChar: 420
+      endSourceChar: 420
+      line: 14
+      lineChar: 114
+      spanCodeSection: 
+    - startInstruction: 152
+      endInstruction: 151
+      startSourceChar: 420
+      endSourceChar: 426
+      line: 14
+      lineChar: 114
+      spanCodeSection: Mathf.
+    - startInstruction: 152
+      endInstruction: 151
+      startSourceChar: 426
+      endSourceChar: 437
+      line: 14
+      lineChar: 120
+      spanCodeSection: FloorToInt(
+    - startInstruction: 152
+      endInstruction: 151
+      startSourceChar: 437
+      endSourceChar: 437
+      line: 14
+      lineChar: 131
+      spanCodeSection: 
+    - startInstruction: 152
+      endInstruction: 151
+      startSourceChar: 437
+      endSourceChar: 449
+      line: 14
+      lineChar: 131
+      spanCodeSection: targetBlock.
+    - startInstruction: 152
+      endInstruction: 223
+      startSourceChar: 449
+      endSourceChar: 453
+      line: 14
+      lineChar: 143
+      spanCodeSection: 'z), '
+    - startInstruction: 224
+      endInstruction: 224
+      startSourceChar: 453
+      endSourceChar: 453
+      line: 14
+      lineChar: 147
+      spanCodeSection: 
+  hasInteractEvent: 1
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11500000, guid: e7f8882629f6caf49a9bf31005a94219, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: fieldDefinitions
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UdonSharp.FieldDefinition,
+        UdonSharp.Editor]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: generator
+    - Name: $v
+      Entry: 7
+      Data: 2|UdonSharp.FieldDefinition, UdonSharp.Editor
+    - Name: fieldSymbol
+      Entry: 7
+      Data: 3|UdonSharp.SymbolDefinition, UdonSharp.Editor
+    - Name: internalType
+      Entry: 7
+      Data: 4|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: WorldGenerator, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: declarationType
+      Entry: 3
+      Data: 1
+    - Name: syncMode
+      Entry: 3
+      Data: 0
+    - Name: symbolResolvedTypeName
+      Entry: 1
+      Data: VRCUdonUdonBehaviour
+    - Name: symbolOriginalName
+      Entry: 1
+      Data: generator
+    - Name: symbolUniqueName
+      Entry: 1
+      Data: generator
+    - Name: symbolDefaultValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: fieldAttributes
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 6|UnityEngine.SerializeField, UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: userBehaviourSource
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: targetBlock
+    - Name: $v
+      Entry: 7
+      Data: 7|UdonSharp.FieldDefinition, UdonSharp.Editor
+    - Name: fieldSymbol
+      Entry: 7
+      Data: 8|UdonSharp.SymbolDefinition, UdonSharp.Editor
+    - Name: internalType
+      Entry: 7
+      Data: 9|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: declarationType
+      Entry: 3
+      Data: 1
+    - Name: syncMode
+      Entry: 3
+      Data: 0
+    - Name: symbolResolvedTypeName
+      Entry: 1
+      Data: UnityEngineVector3
+    - Name: symbolOriginalName
+      Entry: 1
+      Data: targetBlock
+    - Name: symbolUniqueName
+      Entry: 1
+      Data: targetBlock
+    - Name: symbolDefaultValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: fieldAttributes
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 11|UnityEngine.SerializeField, UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: userBehaviourSource
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: blockType
+    - Name: $v
+      Entry: 7
+      Data: 12|UdonSharp.FieldDefinition, UdonSharp.Editor
+    - Name: fieldSymbol
+      Entry: 7
+      Data: 13|UdonSharp.SymbolDefinition, UdonSharp.Editor
+    - Name: internalType
+      Entry: 7
+      Data: 14|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: System.Byte, mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: declarationType
+      Entry: 3
+      Data: 1
+    - Name: syncMode
+      Entry: 3
+      Data: 0
+    - Name: symbolResolvedTypeName
+      Entry: 1
+      Data: SystemByte
+    - Name: symbolOriginalName
+      Entry: 1
+      Data: blockType
+    - Name: symbolUniqueName
+      Entry: 1
+      Data: blockType
+    - Name: symbolDefaultValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: fieldAttributes
+      Entry: 7
+      Data: 15|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 16|UnityEngine.SerializeField, UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: userBehaviourSource
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
