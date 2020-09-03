@@ -8,8 +8,10 @@ A Minecraft Classic implementation for VRChat using UdonSharp.
 - Unity 2018.4.20f1
 
 ### Installation
-1. Add the UdonMinecraft git folder as a new project to Unity Hub.
+1. Download the git repository into a folder named UdonMinecraft.
+2. Add the UdonMinecraft folder as a Unity project to Unity Hub.
+3. Make sure the project is set to use Unity 2018.4.20f1.
 2. Open the project and let it build all local files.
-3. have fun!
+3. Have fun!
 
 ## Made by Markcreator
