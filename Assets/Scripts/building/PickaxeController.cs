@@ -29,6 +29,7 @@ public class PickaxeController : UdonSharpBehaviour
         {
             if (!pickedUp)
             {
+                // Inventory location management
                 if (Networking.LocalPlayer.IsUserInVR())
                 {
                     transform.position = Networking.LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).position + new Vector3(0, 0.1f, 0);
@@ -42,6 +43,7 @@ public class PickaxeController : UdonSharpBehaviour
             }
             else
             {
+                // Check if pickaxe hitbox is in solid block and if so remove it
                 int[] block = generator.positionToBlockPosition(hitbox.transform.position);
                 if (generator.isInBounds(block[0], block[1], block[2]) && generator.getBlockType(block[0], block[1], block[2]) != 0)
                 {
@@ -51,6 +53,7 @@ public class PickaxeController : UdonSharpBehaviour
         }
     }
 
+    // Equip pickaxe
     override public void OnPickup()
     {
         pickedUp = true;
@@ -59,6 +62,7 @@ public class PickaxeController : UdonSharpBehaviour
         blockSelector.SetActive(false);
     }
 
+    // Reset inventory
     override public void OnDrop()
     {
         pickedUp = false;

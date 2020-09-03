@@ -6,9 +6,10 @@ using VRC.Udon;
 
 public class SyncedBlock : UdonSharpBehaviour
 {
-    [UdonSynced(UdonSyncMode.None)] string broadcastBlock = "";
-    [SerializeField] BlockSync sync;
+    [SerializeField] BlockSync sync; // Synced block manager
+    [UdonSynced(UdonSyncMode.None)] string broadcastBlock = ""; // Global serialized block state
 
+    // Local representation
     string localBlock = "";
     public byte x = 0, y = 0, z = 0, type = 0;
 
@@ -21,6 +22,7 @@ public class SyncedBlock : UdonSharpBehaviour
         broadcastBlock = serialize(x, y, z, type);
     }
 
+    // On block broadcast change local block state
     public override void OnPreSerialization()
     {
         if (broadcastBlock != localBlock)
@@ -30,6 +32,7 @@ public class SyncedBlock : UdonSharpBehaviour
         }
     }
 
+    // On receive block change local block state
     public override void OnDeserialization()
     {
         if (broadcastBlock != localBlock)
@@ -40,12 +43,14 @@ public class SyncedBlock : UdonSharpBehaviour
         }
     }
 
+    // Pack bytes into string efficiently
     string serialize(byte x, byte y, byte z, byte type)
     {
         byte[] data = new byte[4] { x, y, z, type };
         return System.Convert.ToBase64String(data);
     }
 
+    // Unpack bytes from string into local state
     void deserialize(string dataString)
     {
         byte[] data = System.Convert.FromBase64String(dataString);

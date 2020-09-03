@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: BoneFollower
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 275fbe1989d18704d997f3e307824602,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: b880066f153daea4d880859aa62b95b6,
     type: 2}
   udonAssembly: ".data_start\n\n    .export trackedBone\n\n    __refl_const_intnl_udonTypeID:
     %SystemInt64, null\n    __refl_const_intnl_udonTypeName: %SystemString, null\n

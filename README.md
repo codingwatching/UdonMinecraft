@@ -1,5 +1,5 @@
 # UdonMinecraft
-A Minecraft Classic implementation for VRChat using UdonSharp.
+A Minecraft Classic world for VRChat using UdonSharp.
 
 ## Getting started
 

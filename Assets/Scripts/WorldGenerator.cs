@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class WorldGenerator : UdonSharpBehaviour
 {
-    [SerializeField] GameObject chunkPrefab;
     [SerializeField] Material blockTextures;
+    [SerializeField] GameObject chunkPrefab;
     [SerializeField] GameObject wallPrefab;
     [SerializeField] GameObject floorPrefab;
     [SerializeField] GameObject spawnButton;
     [SerializeField] Text progressText;
 
-    byte CHUNK_COUNT = 24; // Amount of chunks per axis
-    byte CHUNK_SIZE = 4;
-    byte CHUNK_HEIGHT = 32;
+    const byte CHUNK_COUNT = 24; // Amount of chunks per axis
+    const byte CHUNK_SIZE = 4;
+    const byte CHUNK_HEIGHT = 32;
 
+    // All storage arrays
     GameObject[][] chunks;
     bool[][] chunkLoaded;
     bool[][] meshLoaded;
@@ -83,6 +84,7 @@ public class WorldGenerator : UdonSharpBehaviour
         wallLeft.transform.Rotate(new Vector3(0, -90, 0));
         wallRight.transform.Rotate(new Vector3(0, 90, 0));
 
+        // Start 1-per-frame chunk loading
         chunkLoadingStarted = true;
     }
 
@@ -91,6 +93,7 @@ public class WorldGenerator : UdonSharpBehaviour
     {
         if (chunkLoadingStarted)
         {   
+            // Phase 1: Chunk spawning and block array filling
             for (byte x = 0; x < CHUNK_COUNT; x++)
             {
                 for (byte y = 0; y < CHUNK_COUNT; y++)
@@ -105,6 +108,7 @@ public class WorldGenerator : UdonSharpBehaviour
                 }
             }
 
+            // Phase 2: Mesh building
             for (byte x = 0; x < CHUNK_COUNT; x++)
             {
                 for (byte y = 0; y < CHUNK_COUNT; y++)
@@ -122,19 +126,19 @@ public class WorldGenerator : UdonSharpBehaviour
 
             // TODO instance catchup
 
+            // Finish terrain generation
             chunkLoadingStarted = false;
             chunksReady = true;
-
             progressText.text = "";
             spawnButton.SetActive(true);
         }
     }
 
+    // Block array helpers
     void initializeBlockArray()
     {
         blocks = new byte[CHUNK_SIZE * CHUNK_COUNT][][];
     }
-
     void fillBlockArray()
     {
         for (byte x = 0; x < CHUNK_SIZE * CHUNK_COUNT; x++)
@@ -148,12 +152,14 @@ public class WorldGenerator : UdonSharpBehaviour
         }
     }
 
+    // Assign global block textures to chunk
     void setBlockTextureMaterial(GameObject chunk)
     {
         chunk.GetComponent<Renderer>().material = blockTextures;
     }
 
-    // Chunks
+    // Chunk related functions // 
+
    void loadChunkXY(byte x, byte y)
     {
         chunks[x][y].transform.position = new Vector3(CHUNK_SIZE * x, 0, CHUNK_SIZE * y);
@@ -169,6 +175,7 @@ public class WorldGenerator : UdonSharpBehaviour
             {
                 for (byte z = (byte) (CHUNK_SIZE * chunkY); z < CHUNK_SIZE * chunkY + CHUNK_SIZE; z++)
                 {
+                    // This generates the terrain, it's a lot of fun to play with!
                     float noise = Mathf.PerlinNoise(x * 0.05f, z * 0.05f) * 5f;
                     float treeNoise = Mathf.PerlinNoise(x * 0.5f, z * 0.5f);
                     byte height = (byte) (5 + (int) noise);
@@ -193,15 +200,12 @@ public class WorldGenerator : UdonSharpBehaviour
                     {
                         blocks[x][y][z] = 3;
                     }
-                    /*if (y < height)
-                    {
-                        blocks[x][y][z] = Random.Range(0, blockTable.Length);
-                    }*/
                 }
             }
         }
     }
 
+    // Build mesh for a chunk
     void buildMesh(byte chunkX, byte chunkY)
     {
         int meshIndex = 0;
@@ -212,7 +216,7 @@ public class WorldGenerator : UdonSharpBehaviour
             {
                 for (byte z = 0; z < CHUNK_SIZE; z++)
                 {
-                    byte blockX = (byte) (CHUNK_SIZE * chunkX + x), blockY = y, blockZ = (byte) (CHUNK_SIZE * chunkY + z);
+                    byte blockX = (byte) (CHUNK_SIZE * chunkX + x), blockY = y, blockZ = (byte) (CHUNK_SIZE * chunkY + z); // Block offsets to translate from chunk to global block location
                     byte blockType = blocks[blockX][blockY][blockZ];
 
                     if (blockType > 0)
@@ -221,6 +225,7 @@ public class WorldGenerator : UdonSharpBehaviour
                         float percentWidth = 0.02083333f;
                         float percentHeight = 0.0212766f;
 
+                        // Get correct block textures from supported block list
                         byte[] texture = getTextureOffsets(blockType);
                         byte transparency = 0, textureX = 0, textureY = 0, sideX = 0, sideY = 0, bottomX = 0, bottomY = 0;
                         if (texture.Length == 3)
@@ -240,7 +245,7 @@ public class WorldGenerator : UdonSharpBehaviour
                             bottomY = texture[6];
                         }
 
-                        // UP
+                        // UP face
                         if (blockY + 1 >= CHUNK_HEIGHT - 1 || transparency == 2 || getTextureOffsets(blocks[blockX][blockY + 1][blockZ])[0] != transparency) // If adjecent block is outside chunk or type is other transparency layer
 
 
@@ -265,7 +270,7 @@ public class WorldGenerator : UdonSharpBehaviour
                             meshIndex++;
                         }
 
-                        // DOWN
+                        // DOWN face
                         if (blockY - 1 >= 0 && (transparency == 2 || getTextureOffsets(blocks[blockX][blockY - 1][blockZ])[0] != transparency)) // Adjecent block is inside chunk AND type is different transparency layer
                         {
                             vertices[meshIndex * 4 + 0] = new Vector3(x, y - 1, z);
@@ -288,7 +293,7 @@ public class WorldGenerator : UdonSharpBehaviour
                             meshIndex++;
                         }
 
-                        // RIGHT
+                        // RIGHT face
                         if (blockX + 1 <= CHUNK_SIZE * CHUNK_COUNT - 1 && (transparency == 2 || getTextureOffsets(blocks[blockX + 1][blockY][blockZ])[0] != transparency))
                         {
                             vertices[meshIndex * 4 + 0] = new Vector3(x + 1, y - 1, z);
@@ -311,7 +316,7 @@ public class WorldGenerator : UdonSharpBehaviour
                             meshIndex++;
                         }
 
-                        // LEFT
+                        // LEFT face
                         if (blockX - 1 >= 0 && (transparency == 2 || getTextureOffsets(blocks[blockX - 1][blockY][blockZ])[0] != transparency))
                         {
                             vertices[meshIndex * 4 + 0] = new Vector3(x, y - 1, z);
@@ -334,7 +339,7 @@ public class WorldGenerator : UdonSharpBehaviour
                             meshIndex++;
                         }
 
-                        // BACK
+                        // BACK face
                         if (blockZ + 1 <= CHUNK_SIZE * CHUNK_COUNT - 1 && (transparency == 2 || getTextureOffsets(blocks[blockX][blockY][blockZ + 1])[0] != transparency))
                         {
                             vertices[meshIndex * 4 + 0] = new Vector3(x, y - 1, z + 1);
@@ -357,7 +362,7 @@ public class WorldGenerator : UdonSharpBehaviour
                             meshIndex++;
                         }
 
-                        // FRONT
+                        // FRONT face
                         if (blockZ - 1 >= 0 && (transparency == 2 || getTextureOffsets(blocks[blockX][blockY][blockZ - 1])[0] != transparency))
                         {
                             vertices[meshIndex * 4 + 0] = new Vector3(x, y - 1, z);
@@ -390,13 +395,11 @@ public class WorldGenerator : UdonSharpBehaviour
         {
             finalVertices[i] = vertices[i];
         }
-
         Vector2[] finalUv = new Vector2[meshIndex * 4];
         for (int i = 0; i < finalUv.Length; i++)
         {
             finalUv[i] = uv[i];
         }
-        
         int[] finalTris = new int[meshIndex * 6];
         for (int i = 0; i < finalTris.Length; i++)
         {
@@ -416,6 +419,7 @@ public class WorldGenerator : UdonSharpBehaviour
         Debug.Log("Chunk " + chunkX + " " + chunkY + " rendered with " + finalVertices.Length + " verts and " + finalTris.Length + " tris");
     }
     
+    // Chunk helper functions
     void rerenderAdjacentChunks(byte blockX, byte blockZ)
     {
         byte[] chunk = getBlockChunk(blockX, blockZ);
@@ -455,18 +459,8 @@ public class WorldGenerator : UdonSharpBehaviour
         }
         return new byte[2] { (byte) ((blockX - (blockX % CHUNK_SIZE)) / CHUNK_SIZE), (byte) ((blockZ - (blockZ % CHUNK_SIZE)) / CHUNK_SIZE) };
     }
-
-    // Public functions
-    public bool isInBounds(int blockX, int blockY, int blockZ)
-    {
-        byte[] chunk = getBlockChunk(blockX, blockZ);
-        if (chunk == null || chunk[0] < 0 || chunk[0] > CHUNK_COUNT - 1 || chunk[1] < 0 || chunk[1] > CHUNK_COUNT - 1 || blockX < 0 || blockZ < 0 || blockX > CHUNK_SIZE * CHUNK_COUNT - 1 || blockZ > CHUNK_SIZE * CHUNK_COUNT - 1 || blockY > CHUNK_HEIGHT - 1 || blockY < 0)
-        {
-            return false;
-        }
-        return true;
-    }
-    
+        
+    // Building a Minecraft tree, could be more efficient
     void makeTree(byte x, byte y, byte z)
     {
         for (int treeX = -2; treeX < 3; treeX++)
@@ -507,6 +501,17 @@ public class WorldGenerator : UdonSharpBehaviour
         blocks[x][y + 2][z] = 7;
         blocks[x][y + 3][z] = 7;
         blocks[x][y + 4][z] = 7;
+    }
+
+    // Public API functions
+    public bool isInBounds(int blockX, int blockY, int blockZ)
+    {
+        byte[] chunk = getBlockChunk(blockX, blockZ);
+        if (chunk == null || chunk[0] < 0 || chunk[0] > CHUNK_COUNT - 1 || chunk[1] < 0 || chunk[1] > CHUNK_COUNT - 1 || blockX < 0 || blockZ < 0 || blockX > CHUNK_SIZE * CHUNK_COUNT - 1 || blockZ > CHUNK_SIZE * CHUNK_COUNT - 1 || blockY > CHUNK_HEIGHT - 1 || blockY < 0)
+        {
+            return false;
+        }
+        return true;
     }
 
     public byte getBlockType(int blockX, int blockY, int blockZ)
@@ -595,7 +600,7 @@ public class WorldGenerator : UdonSharpBehaviour
         return 0;
     }
 
-    // Blocks
+    // Supported blocks and texture database
     byte[][] blockTable;
     bool blockTableFilled = false;
 

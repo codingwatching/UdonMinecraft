@@ -4,6 +4,7 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
+// Helper class for modifying blocks in the Unity editor
 public class BlockModifier : UdonSharpBehaviour
 {
     [SerializeField] WorldGenerator generator;

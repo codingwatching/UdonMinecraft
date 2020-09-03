@@ -8,11 +8,11 @@ public class SpawnController : UdonSharpBehaviour
 {
     [SerializeField] WorldGenerator generator;
 
-    override public void Interact()
+    public override void Interact()
     {
-        byte xz = (byte) Mathf.FloorToInt(generator.getTotalChunksWidth() / 2f);
+        byte mapMiddle = (byte) Mathf.FloorToInt(generator.getTotalChunksWidth() / 2f);
 
-        Networking.LocalPlayer.TeleportTo(new Vector3(xz, generator.getXZHeight(xz, xz), xz),
+        Networking.LocalPlayer.TeleportTo(new Vector3(mapMiddle, generator.getXZHeight(mapMiddle, mapMiddle), mapMiddle),
                                           Networking.LocalPlayer.GetRotation(),
                                           VRC_SceneDescriptor.SpawnOrientation.Default,
                                           false);

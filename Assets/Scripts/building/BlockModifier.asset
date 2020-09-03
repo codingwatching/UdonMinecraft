@@ -162,365 +162,366 @@ MonoBehaviour:
     - startInstruction: 0
       endInstruction: -1
       startSourceChar: 70
-      endSourceChar: 79
+      endSourceChar: 137
       line: 4
       lineChar: 10
-      spanCodeSection: "Udon;\r\n\r\n"
+      spanCodeSection: "Udon;\r\n\r\n// Helper class for modifying blocks in the Unity
+        editor\r\n"
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 79
-      endSourceChar: 106
-      line: 6
+      startSourceChar: 137
+      endSourceChar: 164
+      line: 7
       lineChar: 0
       spanCodeSection: 'public class BlockModifier '
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 106
-      endSourceChar: 108
-      line: 6
+      startSourceChar: 164
+      endSourceChar: 166
+      line: 7
       lineChar: 27
       spanCodeSection: ': '
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 108
-      endSourceChar: 108
-      line: 6
+      startSourceChar: 166
+      endSourceChar: 166
+      line: 7
       lineChar: 29
       spanCodeSection: 
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 108
-      endSourceChar: 135
-      line: 6
+      startSourceChar: 166
+      endSourceChar: 193
+      line: 7
       lineChar: 29
       spanCodeSection: "UdonSharpBehaviour\r\n{\r\n    "
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 135
-      endSourceChar: 136
-      line: 8
+      startSourceChar: 193
+      endSourceChar: 194
+      line: 9
       lineChar: 4
       spanCodeSection: '['
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 136
-      endSourceChar: 136
-      line: 8
+      startSourceChar: 194
+      endSourceChar: 194
+      line: 9
       lineChar: 5
       spanCodeSection: 
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 136
-      endSourceChar: 152
-      line: 8
+      startSourceChar: 194
+      endSourceChar: 210
+      line: 9
       lineChar: 5
       spanCodeSection: 'SerializeField] '
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 152
-      endSourceChar: 152
-      line: 8
+      startSourceChar: 210
+      endSourceChar: 210
+      line: 9
       lineChar: 21
       spanCodeSection: 
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 152
-      endSourceChar: 183
-      line: 8
+      startSourceChar: 210
+      endSourceChar: 241
+      line: 9
       lineChar: 21
       spanCodeSection: "WorldGenerator generator;\r\n    "
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 183
-      endSourceChar: 184
-      line: 9
+      startSourceChar: 241
+      endSourceChar: 242
+      line: 10
       lineChar: 4
       spanCodeSection: '['
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 184
-      endSourceChar: 184
-      line: 9
+      startSourceChar: 242
+      endSourceChar: 242
+      line: 10
       lineChar: 5
       spanCodeSection: 
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 184
-      endSourceChar: 200
-      line: 9
+      startSourceChar: 242
+      endSourceChar: 258
+      line: 10
       lineChar: 5
       spanCodeSection: 'SerializeField] '
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 200
-      endSourceChar: 200
-      line: 9
+      startSourceChar: 258
+      endSourceChar: 258
+      line: 10
       lineChar: 21
       spanCodeSection: 
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 200
-      endSourceChar: 226
-      line: 9
+      startSourceChar: 258
+      endSourceChar: 284
+      line: 10
       lineChar: 21
       spanCodeSection: "Vector3 targetBlock;\r\n    "
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 226
-      endSourceChar: 227
-      line: 10
+      startSourceChar: 284
+      endSourceChar: 285
+      line: 11
       lineChar: 4
       spanCodeSection: '['
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 227
-      endSourceChar: 227
-      line: 10
+      startSourceChar: 285
+      endSourceChar: 285
+      line: 11
       lineChar: 5
       spanCodeSection: 
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 227
-      endSourceChar: 243
-      line: 10
+      startSourceChar: 285
+      endSourceChar: 301
+      line: 11
       lineChar: 5
       spanCodeSection: 'SerializeField] '
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 243
-      endSourceChar: 243
-      line: 10
+      startSourceChar: 301
+      endSourceChar: 301
+      line: 11
       lineChar: 21
       spanCodeSection: 
     - startInstruction: 0
       endInstruction: -1
-      startSourceChar: 243
-      endSourceChar: 266
-      line: 10
+      startSourceChar: 301
+      endSourceChar: 324
+      line: 11
       lineChar: 21
       spanCodeSection: "byte blockType;\r\n\r\n    "
     - startInstruction: 0
       endInstruction: 7
-      startSourceChar: 266
-      endSourceChar: 303
-      line: 12
+      startSourceChar: 324
+      endSourceChar: 361
+      line: 13
       lineChar: 4
       spanCodeSection: "override public void Interact()\r\n    "
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 303
-      endSourceChar: 314
-      line: 13
+      startSourceChar: 361
+      endSourceChar: 372
+      line: 14
       lineChar: 4
       spanCodeSection: "{\r\n        "
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 314
-      endSourceChar: 314
-      line: 14
+      startSourceChar: 372
+      endSourceChar: 372
+      line: 15
       lineChar: 8
       spanCodeSection: 
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 314
-      endSourceChar: 314
-      line: 14
+      startSourceChar: 372
+      endSourceChar: 372
+      line: 15
       lineChar: 8
       spanCodeSection: 
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 314
-      endSourceChar: 314
-      line: 14
+      startSourceChar: 372
+      endSourceChar: 372
+      line: 15
       lineChar: 8
       spanCodeSection: 
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 314
-      endSourceChar: 324
-      line: 14
+      startSourceChar: 372
+      endSourceChar: 382
+      line: 15
       lineChar: 8
       spanCodeSection: generator.
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 324
-      endSourceChar: 333
-      line: 14
+      startSourceChar: 382
+      endSourceChar: 391
+      line: 15
       lineChar: 18
       spanCodeSection: addBlock(
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 333
-      endSourceChar: 340
-      line: 14
+      startSourceChar: 391
+      endSourceChar: 398
+      line: 15
       lineChar: 27
       spanCodeSection: '(byte) '
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 340
-      endSourceChar: 340
-      line: 14
+      startSourceChar: 398
+      endSourceChar: 398
+      line: 15
       lineChar: 34
       spanCodeSection: 
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 340
-      endSourceChar: 340
-      line: 14
+      startSourceChar: 398
+      endSourceChar: 398
+      line: 15
       lineChar: 34
       spanCodeSection: 
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 340
-      endSourceChar: 346
-      line: 14
+      startSourceChar: 398
+      endSourceChar: 404
+      line: 15
       lineChar: 34
       spanCodeSection: Mathf.
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 346
-      endSourceChar: 357
-      line: 14
+      startSourceChar: 404
+      endSourceChar: 415
+      line: 15
       lineChar: 40
       spanCodeSection: FloorToInt(
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 357
-      endSourceChar: 357
-      line: 14
+      startSourceChar: 415
+      endSourceChar: 415
+      line: 15
       lineChar: 51
       spanCodeSection: 
     - startInstruction: 8
       endInstruction: 7
-      startSourceChar: 357
-      endSourceChar: 369
-      line: 14
+      startSourceChar: 415
+      endSourceChar: 427
+      line: 15
       lineChar: 51
       spanCodeSection: targetBlock.
     - startInstruction: 8
       endInstruction: 79
-      startSourceChar: 369
-      endSourceChar: 373
-      line: 14
+      startSourceChar: 427
+      endSourceChar: 431
+      line: 15
       lineChar: 63
       spanCodeSection: 'x), '
     - startInstruction: 80
       endInstruction: 79
-      startSourceChar: 373
-      endSourceChar: 380
-      line: 14
+      startSourceChar: 431
+      endSourceChar: 438
+      line: 15
       lineChar: 67
       spanCodeSection: '(byte) '
     - startInstruction: 80
       endInstruction: 79
-      startSourceChar: 380
-      endSourceChar: 380
-      line: 14
+      startSourceChar: 438
+      endSourceChar: 438
+      line: 15
       lineChar: 74
       spanCodeSection: 
     - startInstruction: 80
       endInstruction: 79
-      startSourceChar: 380
-      endSourceChar: 380
-      line: 14
+      startSourceChar: 438
+      endSourceChar: 438
+      line: 15
       lineChar: 74
       spanCodeSection: 
     - startInstruction: 80
       endInstruction: 79
-      startSourceChar: 380
-      endSourceChar: 386
-      line: 14
+      startSourceChar: 438
+      endSourceChar: 444
+      line: 15
       lineChar: 74
       spanCodeSection: Mathf.
     - startInstruction: 80
       endInstruction: 79
-      startSourceChar: 386
-      endSourceChar: 397
-      line: 14
+      startSourceChar: 444
+      endSourceChar: 455
+      line: 15
       lineChar: 80
       spanCodeSection: FloorToInt(
     - startInstruction: 80
       endInstruction: 79
-      startSourceChar: 397
-      endSourceChar: 397
-      line: 14
+      startSourceChar: 455
+      endSourceChar: 455
+      line: 15
       lineChar: 91
       spanCodeSection: 
     - startInstruction: 80
       endInstruction: 79
-      startSourceChar: 397
-      endSourceChar: 409
-      line: 14
+      startSourceChar: 455
+      endSourceChar: 467
+      line: 15
       lineChar: 91
       spanCodeSection: targetBlock.
     - startInstruction: 80
       endInstruction: 151
-      startSourceChar: 409
-      endSourceChar: 413
-      line: 14
+      startSourceChar: 467
+      endSourceChar: 471
+      line: 15
       lineChar: 103
       spanCodeSection: 'y), '
     - startInstruction: 152
       endInstruction: 151
-      startSourceChar: 413
-      endSourceChar: 420
-      line: 14
+      startSourceChar: 471
+      endSourceChar: 478
+      line: 15
       lineChar: 107
       spanCodeSection: '(byte) '
     - startInstruction: 152
       endInstruction: 151
-      startSourceChar: 420
-      endSourceChar: 420
-      line: 14
+      startSourceChar: 478
+      endSourceChar: 478
+      line: 15
       lineChar: 114
       spanCodeSection: 
     - startInstruction: 152
       endInstruction: 151
-      startSourceChar: 420
-      endSourceChar: 420
-      line: 14
+      startSourceChar: 478
+      endSourceChar: 478
+      line: 15
       lineChar: 114
       spanCodeSection: 
     - startInstruction: 152
       endInstruction: 151
-      startSourceChar: 420
-      endSourceChar: 426
-      line: 14
+      startSourceChar: 478
+      endSourceChar: 484
+      line: 15
       lineChar: 114
       spanCodeSection: Mathf.
     - startInstruction: 152
       endInstruction: 151
-      startSourceChar: 426
-      endSourceChar: 437
-      line: 14
+      startSourceChar: 484
+      endSourceChar: 495
+      line: 15
       lineChar: 120
       spanCodeSection: FloorToInt(
     - startInstruction: 152
       endInstruction: 151
-      startSourceChar: 437
-      endSourceChar: 437
-      line: 14
+      startSourceChar: 495
+      endSourceChar: 495
+      line: 15
       lineChar: 131
       spanCodeSection: 
     - startInstruction: 152
       endInstruction: 151
-      startSourceChar: 437
-      endSourceChar: 449
-      line: 14
+      startSourceChar: 495
+      endSourceChar: 507
+      line: 15
       lineChar: 131
       spanCodeSection: targetBlock.
     - startInstruction: 152
       endInstruction: 223
-      startSourceChar: 449
-      endSourceChar: 453
-      line: 14
+      startSourceChar: 507
+      endSourceChar: 511
+      line: 15
       lineChar: 143
       spanCodeSection: 'z), '
     - startInstruction: 224
       endInstruction: 224
-      startSourceChar: 453
-      endSourceChar: 453
-      line: 14
+      startSourceChar: 511
+      endSourceChar: 511
+      line: 15
       lineChar: 147
       spanCodeSection: 
   hasInteractEvent: 1

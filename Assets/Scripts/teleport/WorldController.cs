@@ -8,7 +8,7 @@ public class WorldController : UdonSharpBehaviour
 {
     [SerializeField] WorldGenerator generator;
 
-    override public void Interact()
+    public override void Interact()
     {
         gameObject.SetActive(false);
         generator.startSetup();

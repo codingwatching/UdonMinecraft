@@ -34,7 +34,7 @@ MonoBehaviour:
     using UnityEngine;\n        \n         # using VRC.SDKBase;\n        \n         #
     using VRC.Udon;\n        \n         # public class WorldController : UdonSharpBehaviour\n.code_start\n
     \       \n         # [SerializeField] WorldGenerator generator;\n        \n         #
-    override public void Interact()\n    .export _interact\n        \n    _interact:\n
+    public override void Interact()\n    .export _interact\n        \n    _interact:\n
     \       \n        PUSH, __0_const_intnl_SystemUInt32\n        \n         # {\n
     \       \n         # gameObject.SetActive(false);\n        PUSH, __0_this_intnl_UnityEngineGameObject\n
     \       PUSH, __0_const_intnl_SystemBoolean\n        EXTERN, \"UnityEngineGameObject.__SetActive__SystemBoolean__SystemVoid\"\n
@@ -247,7 +247,7 @@ MonoBehaviour:
       endSourceChar: 224
       line: 10
       lineChar: 4
-      spanCodeSection: "override public void Interact()\r\n    "
+      spanCodeSection: "public override void Interact()\r\n    "
     - startInstruction: 8
       endInstruction: 7
       startSourceChar: 224

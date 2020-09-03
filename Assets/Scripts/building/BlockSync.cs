@@ -17,7 +17,7 @@ public class BlockSync : UdonSharpBehaviour
     {
         int blockIndex = getOwnedOrLowerReleasedIndex();
 
-        if(blockIndex <= syncBlocks.Length - 1)
+        if(blockIndex <= syncBlocks.Length - 1) // Check if player has a synced gameobject to talk to
         {
             GameObject block = syncBlocks[blockIndex];
             SyncedBlock syncedBlock = block.GetComponent<SyncedBlock>();
@@ -36,6 +36,7 @@ public class BlockSync : UdonSharpBehaviour
     {
         generator.addBlock(block.x, block.y, block.z, block.type);
 
+        // Prevent players from clipping the chunk mesh
         if (block.type != 0)
         {
             Vector3 blockPos = new Vector3(block.x + 0.5f, block.y - 0.5f, block.z + 0.5f);
@@ -51,6 +52,7 @@ public class BlockSync : UdonSharpBehaviour
         }
     }
 
+    // Magical function to get each player their own index in an array (the actual index may change but the player will always have a unique index)
     public int getOwnedOrLowerReleasedIndex()
     {
         int occupiedIndexes = 0;
@@ -64,12 +66,12 @@ public class BlockSync : UdonSharpBehaviour
         return occupiedIndexes;
     }
 
+    // Assign spectator mode to any players that overflow the array of synced blocks
     void Start()
     {
         if(Networking.LocalPlayer == null) return;
 
         int blockIndex = getOwnedOrLowerReleasedIndex();
-
         if (blockIndex > syncBlocks.Length - 1)
         {
             spectator = true;
@@ -81,6 +83,7 @@ public class BlockSync : UdonSharpBehaviour
         }
     }
 
+    // Take a player out of spectator mode if a player leaves
     public override void OnPlayerLeft(VRCPlayerApi player)
     {
         if(spectator)

@@ -29,6 +29,7 @@ public class BlockSelector : UdonSharpBehaviour
         {
             if (!pickBlock)
             {
+                // Inventory location management
                 if (Networking.LocalPlayer.IsUserInVR())
                 {
                     transform.position = Networking.LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).position + new Vector3(0, 0.35f, 0);
@@ -41,6 +42,7 @@ public class BlockSelector : UdonSharpBehaviour
                 }
             } else
             {
+                // Float inventory in front of player when picking block
                 if (Networking.LocalPlayer.IsUserInVR())
                 {
                     canvas.gameObject.transform.position = Networking.LocalPlayer.GetPosition() + Networking.LocalPlayer.GetRotation() * new Vector3(0, 1, 1);
@@ -55,6 +57,7 @@ public class BlockSelector : UdonSharpBehaviour
         }
     }
 
+    // Open inventory
     public override void OnPickup()
     {
         pickBlock = true;
@@ -64,6 +67,7 @@ public class BlockSelector : UdonSharpBehaviour
         gameObject.transform.localScale = new Vector3(0, 0, 0);
     }
 
+    // Pick block and seset inventory
     void OnPick()
     {
         pickBlock = false;
@@ -76,6 +80,7 @@ public class BlockSelector : UdonSharpBehaviour
         blockController.updateHeldBlock(blockController.previewBlock, blockController.type);
     }
 
+    // A dirty, dirty, dirty way to send block selection events because they don't support variables. I feel dirty.
     public void s2() { blockController.type = 2; OnPick(); }
     public void s3() { blockController.type = 3; OnPick(); }
     public void s4() { blockController.type = 4; OnPick(); }
